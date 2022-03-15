@@ -1,0 +1,43 @@
+psuedo-code for trivia game 
+
+it needs a title page that says: 
+     "DRAINO'S TRIVIA GAME"   --> GOOGLE WHAT VIM VONT IS. THIS IS FIRE
+    
+     
+
+          START GAME       --> THIS WILL BE A SUBMIT FORM 
+
+
+
+        *NOTE* YOUR RESULTS WILL BE AUTOMATICALLY BE MAILED TO:                            1. THE WHITE HOUSE  3. THINK OF MORE THAT ARE 
+               2. CNN                 FUNNIER
+
+    //I NEED TO FIND OUT HOW TO MAKE A TRANSITION  B/C AFTER YOU SUBMIT FORM, YOU WILL GO TO THE ACTUAL GAME//
+-- scott said you can do this in js... "when start game is click... that div display none, other div display:. so you just turn off the ones you don't wanan see and turn on the ones you do
+-- and then you can add a transition in css
+
+PAGE LAYOUT: 
+these can be in flex display. each thing their own lil box.
+        <LOGO HEADER>
+
+         <TRIVIA QUESTION> 
+                                                                    --CSS: display: flex; flex-direction: columns; justify-content: space-evenly
+         <OPTION 1>   --> WHEN SELECTED IT CAN TURN CYAN 
+         <OPTOIN 2>   --> IMPLEMENT A DELAY AND THEN TURN BOX TO 
+         <OPTION 3>     --> RED IF == WRONG ANSWER 
+         <OPTION 4>       --> GREEN OR CONFETTI IF RIGHT ANSWER 
+                            --> ALSO CHANGE TRIVIA QUESTION DIV INNER HTML 
+                                BY PASSING A RANDOM ARRAY WITH POSITIVE OR 
+                                    NEGATIVE REPLIES IF RIGHT OR WRONG
+                        --> ALSO WANT THEIR TO BE MUTABLE GAME MUSIC 
+                        --> IF RIGHT ADD + POSITIVE SOUND EFFECTS 
+                            --> I'M THINKING MIGOS ADLIBS 
+                        --> IF WRONG --> HEINOUS SOUND BITES 
+        //TRANSITION TO NEW SET OF QUESTIONS AND ANSWERS//
+
+        JAVASCRIPT SIDE OF THINGS --
+        FETCH TRIVIA DATASET // THERE'S AN API THAT HAS M/C TRIVIA. IT LOOKS LIKE IT COMES WITH ITS OWN STYLING. MAYBE THAT CAN BE OVERWRITTEN THO? THE BENEFIT IS THAT IT WILL LOAD INCORRECT ANSWERS THAT LOOK SIMILAR, THAT'S HARD TO DO BY THROWING IN RANDOM STRINGS. RIGHT ANSWERS WILL BE TOO OBVIOUS 
+
+        THIS IS SIMILAR TO TIC-TAC-TOE ARRAY. RUNNING AN ARRAY THROW A LOOP AND LISTENING FOR CLICKS. DOING MULTIPLE CHOICE ALLOWS YOU TO KEEP SCORE IN LOOP AS WELL
+
+        it'd also be so tight to have a leader board
