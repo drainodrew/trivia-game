@@ -1,4 +1,4 @@
-
+//intializers 
 let htmlChoices = document.querySelectorAll(".choices")
 let htmlQuestions = document.querySelector(".prompt")
 let htmlScore = document.querySelector(".score")
@@ -13,8 +13,11 @@ const questions = [
   },
 ]
 
+
+//functions 
+let score = 0; //then set htmlScore = score
 for (i = 0, i < htmlChoices.length, i++) {
-  
+
 }
 
 console.log(questions)
