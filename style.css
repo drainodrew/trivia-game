@@ -1,3 +1,17 @@
+video {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  z-index: -100;
+  min-width: 100%;
+  min-height: 100%;
+  width: auto;
+  height: auto;
+  -webkit-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+
 body {
   height: 100%;
   max-width: 800px; /*doing mobile first*/
@@ -9,7 +23,7 @@ body {
   background-position: center; 
   */
   background-position: center;
-  font-family: "fixedsys";
+  font-family: fixedsys;
   margin: 0 auto;
   display: block;
   text-align: center;
@@ -26,6 +40,17 @@ container {
   align-items: center;
 }
 
+.starth1 {
+  position: absolute;
+  top: 45%;
+  bottom: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 50px;
+  text-align: center;
+  margin: 0 auto;
+  display: block;
+}
 .start-page {
 }
 
@@ -55,4 +80,5 @@ container {
   text-align: center;
   width: 100%;
   margin: 0 auto;
+  display: none;
 }
