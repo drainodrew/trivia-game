@@ -28,6 +28,18 @@ body {
   display: block;
   text-align: center;
 }
+.header-container {
+  display: inline;
+}
+.header-score-and-timer {
+  position: absolute;
+  top: 10px;
+  right: 5%;
+  text-align: right;
+  font-size: 10px;
+  padding: 0;
+  margin: 1px;
+}
 
 container {
   display: flex;
@@ -79,6 +91,11 @@ container {
 }
 
 .prompt {
+  display: flex;
+  margin-top: 33%;
+  font-size: 50px;
+  text-align: center;
+  justify-content: center;
 }
 
 .answers {
@@ -89,5 +106,10 @@ container {
   text-align: center;
   width: 100%;
   margin: 0 auto;
+  display: none;
+  margin-top: 100%;
+}
+
+.game-feedback {
   display: none;
 }
