@@ -1,26 +1,56 @@
 //intializers 
 let htmlChoices = document.querySelectorAll(".choices")
-let htmlQuestions = document.querySelector(".prompt")
+let htmlPrompt = document.querySelector(".prompt")
 let htmlScore = document.querySelector(".score")
 let htmlTimer = document.querySelector(".timer")
+let gameChoices = ''
+let score = 0;
+let startGame = document.querySelector(".starth1")
 
 //need to sort the array to be random every time
-const questions = [
+const level1Questions = [
   {
     question: "What is Tyler, the Creator's given full name?",
     choices: ["Tyler Gregory Okonma","Tyler Elijah O'Neal","Tyler Elijah Okonma","Tyler Haley Okonma"],
     answer: 0
   },
+  {
+    question: "when did he start OF?",
+    choices: ["2009", "2006", "2007", "2005"],
+    answer: 2
+  }
 ]
 
 
+
+//let's think thru what we need to do here: 
+// we need to assin the value of 1 question/choice/answer object to the corresponding elements on the page.
+    //question -- > htmlQuestions    choices -- > htmlChoices        answer --> .... hmmmm 
+        //then there needs to be a click event listener on the htmlChoices 
+           // if the value of the element that was chosen == that object's (this.answer?) answer value --> then create animation (for now i'll do color) ... also change the prompt to say "correct" and queue a sound
+              //if it's wrong do the same as above but with differnt content (tyler saying "fuck you")
 //functions 
-let score = 0; //then set htmlScore = score
-for (i = 0, i < htmlChoices.length, i++) {
 
+
+for (let i = 0; i < htmlChoices.length; i++) {
+  htmlChoices[i].addEventListener("click", function idkYet(e) {
+    e.preventDefault;
+    level1Questions.forEach(question => {
+      htmlPrompt.innerHTML = question.question;
+  })
+console.log(htmlPrompt)
+  })
 }
+// level1Questions.forEach(question => {
+//   gameChoices = htmlChoices[question.question];
+//   console.log(gameChoices)
+// })
+//   for (let key in question) {
+//     console.log(`${key}: ${question[key]}`);
+//   }
+//   console.log(key[2])
+// });
 
-console.log(questions)
   
 let bastard = ["Bastard", "Seven", "Odd Toddlers",	"French!", "Blow", "Pigs Fly", "Parade", "Slow It Down","AssMilk", "VCR / Wheels", "Session", "Sarah", "Jack and the Beanstalk", "Tina", "Inglorious"]
 

@@ -8,8 +8,9 @@
 
 <body>
   <video id="bgVideo" controls preload="true" autoplay loop muted>
-    <source src="lefleurjump.mp4" type="video/mp4" > 
-     <source src="lefleurjump.mov" type="video/mov" >    
+    <source src="lefleurjump.webm" type="video/webm">
+    <!-- <source src="lefleurjump.mp4" type="video/mp4" > -->
+     <!--<source src="lefleurjump.mov" type="video/mov" > -->    
     <!--<source src="Home_Page.webm" type="video/webm" > -->
 
  </video>
@@ -25,7 +26,9 @@
       </header>
 
     <div class=start-page> 
-      <h1 class="starth1">START GAME</h1>
+      <form class="start-game">
+        <input type="submit" value="START GAME" class="start-game-button">
+        </form>
       <footer class="disclaimer"></footer>
     <div class="in-play-page">
       <div class="prompt"></div>
@@ -38,7 +41,7 @@
       <div class="your-results"></div>
       <div class="leaderboard">
         <p class="p-leaderboard"></p>
-        <form>
+        <form class="game-feedback">
           <p>If you have questions that you think should be added, please lmk :)</p>
           <label for="feeback">Question</label><br>
           <input type="text" id="feedback">

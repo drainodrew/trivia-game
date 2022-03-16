@@ -40,7 +40,7 @@ container {
   align-items: center;
 }
 
-.starth1 {
+.start-game-button {
   position: absolute;
   top: 45%;
   bottom: 50%;
@@ -50,7 +50,16 @@ container {
   text-align: center;
   margin: 0 auto;
   display: block;
+  background-color: transparent;
+  border: none;
+  animation: blinker 2s linear infinite;
 }
+@keyframes blinker {
+  50% {
+    opacity: 0;
+  }
+}
+
 .start-page {
 }
 
