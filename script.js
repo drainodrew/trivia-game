@@ -8,6 +8,9 @@ let score = 0;
 let startGame = document.querySelector(".start-game")
 let headerTitle = document.querySelector(".header-title")
 
+console.log(htmlChoices);
+
+htmlChoices.style.display = "none"
 //need to sort the array to be random every time
 const level1Questions = [
   {
@@ -36,6 +39,7 @@ startGame.addEventListener("submit", function start(e) {
   e.preventDefault();
   startGame.style.display = "none"
   headerTitle.style.display = "none"
+  htmlChoices.style.display = "flex"
   // add transition function // 
   level1Questions.forEach(question => {
     htmlPrompt.innerHTML = question.question;

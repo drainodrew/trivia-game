@@ -96,18 +96,21 @@ container {
   font-size: 50px;
   text-align: center;
   justify-content: center;
+  margin-bottom: 50px;
 }
 
-.answers {
+.choices {
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: space-evenly;
-  text-align: center;
+  text-align: left;
   width: 100%;
-  margin: 0 auto;
-  display: none;
-  margin-top: 100%;
+  font-size: 50px;
+  top: 70%;
+}
+#choice1 {
+  margin-top: 50px;
 }
 
 .game-feedback {
