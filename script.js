@@ -10,6 +10,12 @@ let headerTitle = document.querySelector(".header-title")
 let w = 0 //this is for the prompt questions
 let z = true //this is to stop clicks after you've made your selection 
 
+//change the values when you feel creative
+let victoryMessage = ["Niiiice, you got the right answer", "That is the right answer", "Good job, mate", "Correct"]
+let randomVictoryMessage = Math.floor(Math.random() * victoryMessage.length);
+console.log(randomVictoryMessage, victoryMessage[randomVictoryMessage]);
+
+
 console.log(htmlChoices);
 
 //need to sort the array to be random every time
@@ -69,6 +75,7 @@ startGame.addEventListener("submit", function start(e) {
         if (htmlChoices[j].innerHTML === level1Questions[0].answer) {
           htmlChoices[j].style.background = "green"
           z = false;
+         htmlPrompt.innerHTML = randomVictoryMessage
           //change the prompt to display victory message
           //put audio here -->
         } else {
@@ -82,15 +89,10 @@ startGame.addEventListener("submit", function start(e) {
      //need to create a function that i can hoist here
     }
   }
-
-//setup question 1
-    
-   // for (let j = 0; j < level1Questions.length; i++) {
-
-   // }
   
 })
-console.log(htmlPrompt)
+//load new page --> should probably do a set interval after the last click function --> after a second automatically goes to next question
+
 
   //level1Questions.forEach(question => {
 //     htmlPrompt.innerHTML = question[0].question;
