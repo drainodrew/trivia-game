@@ -16,7 +16,7 @@ let randomVictoryMessage = Math.floor(Math.random() * victoryMessage.length);
 console.log(randomVictoryMessage, victoryMessage[randomVictoryMessage]);
 
 
-console.log(htmlChoices);
+//console.log(htmlChoices);
 
 //need to sort the array to be random every time
 const level1Questions = [
@@ -28,11 +28,26 @@ const level1Questions = [
   {
     question: "When did he start OF?",
     choices: ["2009", "2006", "2007", "2005"],
-    answer: 2
+    answer: "2007"
+  },
+  {
+    question: "Which show was not created by T?",
+    choices: ["The Jellies,", "Nuts + Bolts", "Loiter Squad", "Mr. Pickles"],
+    answer: "Mr. Pickles"
+  },
+  {
+    question: "When is Tyler's birthday?",
+    choices: ["April 17", "October 30", "June 8", "March 6"],
+    answer: "March 6"
+  },
+  {
+    question: "What city is Tyler from?",
+    choices: ["Hawthorne, California", "Los Angeles, California", "Ladera Heights, California", "Compton, California"],
+    answer: "Hawthorne, California"
   }
 ]
 
-console.log(level1Questions[0].question);
+//console.log(level1Questions[0].question);
 
 
 //let's think thru what we need to do here: 
@@ -50,8 +65,9 @@ window.addEventListener('load', (event) => {
     htmlChoices[i].style.display = "none"
   }
 })
-console.log(startGame)
+//console.log(startGame)
 startGame.addEventListener("submit", function start(e) {
+  w = 0;
   e.preventDefault();
   startGame.style.display = "none"
   headerTitle.style.display = "none"
@@ -61,35 +77,41 @@ startGame.addEventListener("submit", function start(e) {
     htmlChoices[i].style.display = "flex"
     console.log(htmlChoices.length)
     for (let j = 0; j < level1Questions[w].choices.length; j++) {
-      console.log(level1Questions[w].choices.length)
-      console.log(level1Questions[w].choices[j])
-      console.log(htmlChoices[j].innerHTML)
+      // console.log(level1Questions[w].choices.length)
+      // console.log(level1Questions[w].choices[j])
+      // console.log(htmlChoices[j].innerHTML)
       htmlChoices[j].innerHTML = level1Questions[w].choices[j]
-      console.log(htmlChoices[j].innerHTML = level1Questions[w].choices[j])
-      console.log(level1Questions[w].answer)
+      // console.log(htmlChoices[j].innerHTML = level1Questions[w].choices[j])
+      // console.log(level1Questions[w].answer)
       
       //adding event click event listener so player can answer the question
       htmlChoices[j].addEventListener("click", function select(event) {
         event.preventDefault()
         if (z === true) {
-        if (htmlChoices[j].innerHTML === level1Questions[0].answer) {
+        if (htmlChoices[j].innerHTML === level1Questions[w].answer) {
           htmlChoices[j].style.background = "green"
           z = false;
           htmlPrompt.innerHTML = randomVictoryMessage
           score += 10;
           htmlScore.innerHTML = `SCORE: ${score}`;
+          w++
+          const nextQuestion = setInterval(runLevel1, 1000)
+          const blank = setInterval(blankCanvas, 1000)
           //change the prompt to display victory message
           //put audio here -->
         } else {
           htmlChoices[j].style.background = "red"
           z = false;
           htmlPrompt.innerHTML = "that's wrong"
+          w++
+          const nextQuestion = setInterval(runLevel1, 1000)
+          const blank = setInterval(blankCanvas, 1000)
+
           //put audio of tyler saying "fuck you"
           //change prompt to put loss message 
         }
           //need to setup a transition here
          // setInterval --> combine this the fadeout feature. there's a how to in your code bookmarks
-          const nextQuestion = setInterval(runLevel1, 2000)
       }
      })
      //need to create a function that i can hoist here
@@ -99,13 +121,16 @@ startGame.addEventListener("submit", function start(e) {
   
 })
 //w++;  --> put this at end of loop... but it needs to happen at the end of the last loop. 
-w++;
-console.log(w)
-function runLevel1() {
 
-
+function blankCanvas() {
   for (let i = 0; i < htmlChoices.length; i++) {
     htmlChoices[i].style.background = "none"
+  }
+}
+console.log(w)
+function runLevel1() {
+  z = true;
+  for (let i = 0; i < htmlChoices.length; i++) {
     htmlPrompt.innerHTML = level1Questions[w].question 
     htmlChoices[i].style.display = "flex"
     console.log(htmlChoices.length)
@@ -121,12 +146,14 @@ function runLevel1() {
       htmlChoices[j].addEventListener("click", function select(event) {
         event.preventDefault()
         if (z === true) {
-        if (htmlChoices[j].innerHTML === level1Questions[0].answer) {
+        if (htmlChoices[j].innerHTML === level1Questions[w].answer) {
           htmlChoices[j].style.background = "green"
           z = false;
           htmlPrompt.innerHTML = randomVictoryMessage
           score += 10;
           htmlScore.innerHTML = `SCORE: ${score}`;
+          const nextQuestion = setInterval(runLevel1, 1000)
+          const blank = setInterval(blankCanvas, 1000)
           w++
           //change the prompt to display victory message
           //put audio here -->
@@ -134,6 +161,8 @@ function runLevel1() {
           htmlChoices[j].style.background = "red"
           z = false;
           htmlPrompt.innerHTML = "that's wrong"
+          const nextQuestion = setInterval(runLevel1, 1000)
+          const blank = setInterval(blankCanvas, 1000)
           w++
           //put audio of tyler saying "fuck you"
           //change prompt to put loss message 
