@@ -60,13 +60,13 @@ startGame.addEventListener("submit", function start(e) {
   for (let i = 0; i < htmlChoices.length; i++) {
     htmlChoices[i].style.display = "flex"
     console.log(htmlChoices.length)
-    for (let j = 0; j < level1Questions[0].choices.length; j++) {
-      console.log(level1Questions[0].choices.length)
-      console.log(level1Questions[0].choices[j])
+    for (let j = 0; j < level1Questions[w].choices.length; j++) {
+      console.log(level1Questions[w].choices.length)
+      console.log(level1Questions[w].choices[j])
       console.log(htmlChoices[j].innerHTML)
-      htmlChoices[j].innerHTML = level1Questions[0].choices[j]
-      console.log(htmlChoices[j].innerHTML = level1Questions[0].choices[j])
-      console.log(level1Questions[0].answer)
+      htmlChoices[j].innerHTML = level1Questions[w].choices[j]
+      console.log(htmlChoices[j].innerHTML = level1Questions[w].choices[j])
+      console.log(level1Questions[w].answer)
       
       //adding event click event listener so player can answer the question
       htmlChoices[j].addEventListener("click", function select(event) {
@@ -75,22 +75,83 @@ startGame.addEventListener("submit", function start(e) {
         if (htmlChoices[j].innerHTML === level1Questions[0].answer) {
           htmlChoices[j].style.background = "green"
           z = false;
-         htmlPrompt.innerHTML = randomVictoryMessage
+          htmlPrompt.innerHTML = randomVictoryMessage
+          score += 10;
+          htmlScore.innerHTML = `SCORE: ${score}`;
           //change the prompt to display victory message
           //put audio here -->
         } else {
           htmlChoices[j].style.background = "red"
           z = false;
+          htmlPrompt.innerHTML = "that's wrong"
           //put audio of tyler saying "fuck you"
           //change prompt to put loss message 
         }
+          //need to setup a transition here
+         // setInterval --> combine this the fadeout feature. there's a how to in your code bookmarks
+          const nextQuestion = setInterval(runLevel1, 2000)
       }
      })
      //need to create a function that i can hoist here
+    
     }
   }
   
 })
+//w++;  --> put this at end of loop... but it needs to happen at the end of the last loop. 
+w++;
+console.log(w)
+function runLevel1() {
+
+
+  for (let i = 0; i < htmlChoices.length; i++) {
+    htmlChoices[i].style.background = "none"
+    htmlPrompt.innerHTML = level1Questions[w].question 
+    htmlChoices[i].style.display = "flex"
+    console.log(htmlChoices.length)
+    for (let j = 0; j < level1Questions[w].choices.length; j++) {
+      console.log(level1Questions[w].choices.length)
+      console.log(level1Questions[w].choices[j])
+      console.log(htmlChoices[j].innerHTML)
+      htmlChoices[j].innerHTML = level1Questions[w].choices[j]
+      console.log(htmlChoices[j].innerHTML = level1Questions[w].choices[j])
+      console.log(level1Questions[w].answer)
+      
+      //adding event click event listener so player can answer the question
+      htmlChoices[j].addEventListener("click", function select(event) {
+        event.preventDefault()
+        if (z === true) {
+        if (htmlChoices[j].innerHTML === level1Questions[0].answer) {
+          htmlChoices[j].style.background = "green"
+          z = false;
+          htmlPrompt.innerHTML = randomVictoryMessage
+          score += 10;
+          htmlScore.innerHTML = `SCORE: ${score}`;
+          w++
+          //change the prompt to display victory message
+          //put audio here -->
+        } else {
+          htmlChoices[j].style.background = "red"
+          z = false;
+          htmlPrompt.innerHTML = "that's wrong"
+          w++
+          //put audio of tyler saying "fuck you"
+          //change prompt to put loss message 
+        }
+          //need to setup a transition here
+         // setInterval
+      }
+     })
+     //need to create a function that i can hoist here
+    
+    }
+  }
+  
+}
+
+
+
+
 //load new page --> should probably do a set interval after the last click function --> after a second automatically goes to next question
 
 
