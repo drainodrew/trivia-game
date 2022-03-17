@@ -1,3 +1,8 @@
+@font-face {
+  font-family: "futura-free";
+  src: url(Fonts/Futura\ Extra\ Black\ Regular/);
+}
+
 video {
   position: fixed;
   top: 50%;
@@ -23,7 +28,7 @@ body {
   background-position: center; 
   */
   background-position: center;
-  font-family: fixedsys;
+  font-family: Futura Extra Black Regular;
   margin: 0 auto;
   display: block;
   text-align: center;
