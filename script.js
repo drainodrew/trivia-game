@@ -44,6 +44,29 @@ const level1Questions = [
     question: "What city is Tyler from?",
     choices: ["Hawthorne, California", "Los Angeles, California", "Ladera Heights, California", "Compton, California"],
     answer: "Hawthorne, California"
+  },
+  {
+    question: "What has Tyler claimed to be his most valuable possession?",
+    choices: ["keyboard", "inhaler", "bed", "bike"],
+    answer: "inhaler"
+  },
+  {
+    question: "How old was he when he taught himself to play the piano?",
+    choices: ["10 years old", "14 years old", "16 years old", "20 years old"],
+    answer: "14 years old"
+  },
+  {
+    question: "Which of the following is not / has not been a nickname for Tyler?",
+    choices: ["Bunny Hop", "Wolf Haley", "DJ Stank Daddy", "Golf T"],
+    answer: "Golf T"
+  }
+]
+
+const level2Questions = [
+  {
+    question: 'What has T deemed his, "FAVORITE BODY OF WORK" ?',
+    choices: ["In My Mind by Pharrell Williams", "Mama's Gun by Erykah Badu", "Cherry Bomb by Tyler, the Creator", "In Search Of by N.E.R.D."],
+    answer: "In Search Of by N.E.R.D."
   }
 ]
 
@@ -122,6 +145,8 @@ startGame.addEventListener("submit", function start(e) {
 })
 //w++;  --> put this at end of loop... but it needs to happen at the end of the last loop. 
 
+
+//make a function that makes the order of the answer arrays random, so that people can't memorize the order
 function blankCanvas() {
   for (let i = 0; i < htmlChoices.length; i++) {
     htmlChoices[i].style.background = "none"
