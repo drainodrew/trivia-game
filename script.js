@@ -70,6 +70,12 @@ const level2Questions = [
   }
 ]
 
+const level3Questions = [
+  {
+    question: "What song first plays in the Golf Wang 2019 ..."
+  }
+]
+
 //console.log(level1Questions[0].question);
 
 

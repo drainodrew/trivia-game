@@ -3,6 +3,13 @@
   src: url(Fonts/Futura\ Extra\ Black\ Regular/);
 }
 
+.logo {
+  /*position: fixed;
+  top: 100px;
+  left: 50%;
+  transform: translate(-50%, -50%);*/
+}
+
 video {
   position: fixed;
   top: 50%;
