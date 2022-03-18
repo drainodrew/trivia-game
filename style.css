@@ -13,14 +13,10 @@
   z-index: 2;
 }*/
 
-video {
+/*video {
   position: fixed;
   top: 50%;
   left: 50%;
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-attachment: fixed;
-  background-position: center;
   z-index: -100;
   min-width: 100%;
   min-height: 100%;
@@ -29,14 +25,19 @@ video {
   -webkit-transform: translate(-50%, -50%);
   -ms-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
-}
+}*/
 .background {
+  background-image: url(background.gif);
   position: fixed;
   top: 50%;
   left: 50%;
   z-index: -100;
   min-width: 100%;
   min-height: 100%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+  background-position: center;
   width: auto;
   height: auto;
   -webkit-transform: translate(-50%, -50%);
@@ -45,7 +46,6 @@ video {
 }
 
 body {
-  background-image: url(background.gif);
   height: 100%;
   max-width: 800px; /*doing mobile first*/
   /*
