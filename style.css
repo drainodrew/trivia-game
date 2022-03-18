@@ -3,12 +3,15 @@
   src: url(Fonts/Futura\ Extra\ Black\ Regular/);
 }
 
-.logo {
-  /*position: fixed;
-  top: 100px;
-  left: 50%;
-  transform: translate(-50%, -50%);*/
-}
+/*.logo {
+  background-image: url("logo.html");
+  position: absolute;
+  left: 0px;
+  top: 529px;
+  width: 2093px;
+  height: 443px;
+  z-index: 2;
+}*/
 
 video {
   position: fixed;

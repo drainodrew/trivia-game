@@ -13,6 +13,7 @@ let z = true //this is to stop clicks after you've made your selection
 //change the values when you feel creative
 let victoryMessage = ["Niiiice, you got the right answer", "That is the right answer", "Good job, mate", "Correct"]
 let randomVictoryMessage = Math.floor(Math.random() * victoryMessage.length);
+console.log(victoryMessage[randomVictoryMessage])
 console.log(randomVictoryMessage, victoryMessage[randomVictoryMessage]);
 
 
@@ -106,12 +107,9 @@ startGame.addEventListener("submit", function start(e) {
     htmlChoices[i].style.display = "flex"
     console.log(htmlChoices.length)
     for (let j = 0; j < level1Questions[w].choices.length; j++) {
-      // console.log(level1Questions[w].choices.length)
-      // console.log(level1Questions[w].choices[j])
-      // console.log(htmlChoices[j].innerHTML)
+     
       htmlChoices[j].innerHTML = level1Questions[w].choices[j]
-      // console.log(htmlChoices[j].innerHTML = level1Questions[w].choices[j])
-      // console.log(level1Questions[w].answer)
+      timer();
       
       //adding event click event listener so player can answer the question
       htmlChoices[j].addEventListener("click", function select(event) {
@@ -120,7 +118,7 @@ startGame.addEventListener("submit", function start(e) {
         if (htmlChoices[j].innerHTML === level1Questions[w].answer) {
           htmlChoices[j].style.background = "green"
           z = false;
-          htmlPrompt.innerHTML = randomVictoryMessage
+          htmlPrompt.innerHTML = victoryMessage[randomVictoryMessage]
           score += 10;
           htmlScore.innerHTML = `SCORE: ${score}`;
           w++
@@ -180,11 +178,11 @@ function runLevel1() {
         if (htmlChoices[j].innerHTML === level1Questions[w].answer) {
           htmlChoices[j].style.background = "green"
           z = false;
-          htmlPrompt.innerHTML = randomVictoryMessage
+          htmlPrompt.innerHTML = victoryMessage[randomVictoryMessage]
           score += 10;
           htmlScore.innerHTML = `SCORE: ${score}`;
-          const nextQuestion = setInterval(runLevel1, 1000)
-          const blank = setInterval(blankCanvas, 1000)
+          const nextQuestion = setInterval(runLevel1, 2000)
+          const blank = setInterval(blankCanvas, 2000)
           w++
           //change the prompt to display victory message
           //put audio here -->
@@ -209,8 +207,25 @@ function runLevel1() {
   
 }
 
-
-
+function timer(){
+  let sec = 30;
+  let timer = setInterval(function(){
+    htmlTimer.innerHTML = 'TIME: 00:' + sec;
+    console.log(htmlTimer)
+    sec--;
+    if (sec < 10) {
+      htmlTimer.style.color = "red"
+      htmlTimer.style.fontWeight = "bold"
+    }
+      if (sec < 0) {
+      htmlChoices[i].style.background = "red"
+      z = false;
+        htmlPrompt.innerHTML = "RUNNIN' OUT OF TIME"
+        //PLAY RUNNIN' OUT OF TIME
+          clearInterval(timer);
+      }
+  }, 1000);
+}
 
 //load new page --> should probably do a set interval after the last click function --> after a second automatically goes to next question
 
