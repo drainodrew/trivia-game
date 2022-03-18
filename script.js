@@ -9,7 +9,7 @@ let startGame = document.querySelector(".start-game")
 let headerTitle = document.querySelector(".header-title")
 let scoreAndTimer = document.querySelector(".header-score-and-timer")
 let titleTrack = document.getElementById("title-track")
-let startMusic = document.querySelector(".sound-noticeg")
+let startMusic = document.querySelector(".sound-notice")
 console.log(startMusic)
 let w = 0 //this is for the prompt questions
 let z = true //this is to stop clicks after you've made your selection 
@@ -220,7 +220,7 @@ function runLevel1() {
 }
 
 function timer(){
-  let sec = 3;
+  let sec = 15;
   let timer = setInterval(function(){
     htmlTimer.innerHTML = 'TIME: 00:' + sec;
     console.log(htmlTimer)

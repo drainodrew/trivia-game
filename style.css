@@ -28,6 +28,7 @@ video {
 }
 
 body {
+  background-image: url(background.gif);
   height: 100%;
   max-width: 800px; /*doing mobile first*/
   /*
