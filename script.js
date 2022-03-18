@@ -7,14 +7,17 @@ let gameChoices = ''
 let score = 0;
 let startGame = document.querySelector(".start-game")
 let headerTitle = document.querySelector(".header-title")
+let scoreAndTimer = document.querySelector(".header-score-and-timer")
+let titleTrack = document.getElementById("title-track")
+let startMusic = document.querySelector(".sound-noticeg")
+console.log(startMusic)
 let w = 0 //this is for the prompt questions
 let z = true //this is to stop clicks after you've made your selection 
+
 
 //change the values when you feel creative
 let victoryMessage = ["Niiiice, you got the right answer", "That is the right answer", "Good job, mate", "Correct"]
 let randomVictoryMessage = Math.floor(Math.random() * victoryMessage.length);
-console.log(victoryMessage[randomVictoryMessage])
-console.log(randomVictoryMessage, victoryMessage[randomVictoryMessage]);
 
 
 //console.log(htmlChoices);
@@ -91,16 +94,24 @@ const level3Questions = [
 //sets the multiple choice questions to not be displayed on load 
 window.addEventListener('load', (event) => {
   event.preventDefault();
+  scoreAndTimer.style.display = "none"
   for (let i = 0; i < htmlChoices.length; i++) {
     htmlChoices[i].style.display = "none"
+
   }
 })
-//console.log(startGame)
+
+startMusic.addEventListener("click", function (e) {
+  e.preventDefault()
+  document.querySelector(`[data-sound="never-too-far"]`).play()
+
+})
 startGame.addEventListener("submit", function start(e) {
   w = 0;
   e.preventDefault();
   startGame.style.display = "none"
   headerTitle.style.display = "none"
+  scoreAndTimer.style.display = "initial"
     // NEED TO: add transition function and play "callll meeeee if you get loossttt"// 
   htmlPrompt.innerHTML = level1Questions[w].question 
   for (let i = 0; i < htmlChoices.length; i++) {
@@ -154,6 +165,7 @@ startGame.addEventListener("submit", function start(e) {
 function blankCanvas() {
   for (let i = 0; i < htmlChoices.length; i++) {
     htmlChoices[i].style.background = "none"
+    
   }
 }
 console.log(w)
@@ -170,7 +182,7 @@ function runLevel1() {
       htmlChoices[j].innerHTML = level1Questions[w].choices[j]
       console.log(htmlChoices[j].innerHTML = level1Questions[w].choices[j])
       console.log(level1Questions[w].answer)
-      
+      timer();
       //adding event click event listener so player can answer the question
       htmlChoices[j].addEventListener("click", function select(event) {
         event.preventDefault()
@@ -208,21 +220,31 @@ function runLevel1() {
 }
 
 function timer(){
-  let sec = 30;
+  let sec = 3;
   let timer = setInterval(function(){
     htmlTimer.innerHTML = 'TIME: 00:' + sec;
     console.log(htmlTimer)
     sec--;
-    if (sec < 10) {
+    if (sec < 10) htmlTimer.innerHTML = "TIME: 00:0" + sec;
+    if (sec < 5) {
       htmlTimer.style.color = "red"
       htmlTimer.style.fontWeight = "bold"
+      htmlTimer.innerHTML = "TIME: 00:0" + sec;
     }
-      if (sec < 0) {
-      htmlChoices[i].style.background = "red"
-      z = false;
-        htmlPrompt.innerHTML = "RUNNIN' OUT OF TIME"
+    if (sec === 0) {
+      clearInterval(timer);
+      for (let i = 0; i < htmlChoices.length; i++) {
+        htmlChoices[i].style.color = "red"
+        document.querySelector(`[data-sound="running-outta-time"]`).play()
+      }
+        z = false;
+        sec += 0;
+      htmlPrompt.innerHTML = "RUNNING OUT OF TIME"
+      htmlPrompt.style.color = "red"
+      score -= 5
+        htmlTimer.innerHTML = "TIME: 00:00"
+        htmlTimer.style.animation = "blinker 2s linear infinite";
         //PLAY RUNNIN' OUT OF TIME
-          clearInterval(timer);
       }
   }, 1000);
 }
