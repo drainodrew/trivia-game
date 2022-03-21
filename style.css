@@ -173,3 +173,16 @@ img {
 p {
   font-size: 17px;
 }
+
+.fullzoom {
+  animation: full-zoom 1s ease;
+}
+
+@keyframes full-zoom {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(30);
+  }
+}

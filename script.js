@@ -107,9 +107,12 @@ startMusic.addEventListener("click", function (e) {
 
 })
 startGame.addEventListener("submit", function start(e) {
+  document.querySelector(`[data-sound="never-too-far"]`).play()
   w = 0;
   e.preventDefault();
+  setTimeout(() => { headerTitle.classList.add('fullzoom') }, 1000)
   startGame.style.display = "none"
+  startMusic.style.display = "none"
   headerTitle.style.display = "none"
   scoreAndTimer.style.display = "initial"
     // NEED TO: add transition function and play "callll meeeee if you get loossttt"// 
@@ -174,26 +177,21 @@ function runLevel1() {
   for (let i = 0; i < htmlChoices.length; i++) {
     htmlPrompt.innerHTML = level1Questions[w].question 
     htmlChoices[i].style.display = "flex"
-    console.log(htmlChoices.length)
     for (let j = 0; j < level1Questions[w].choices.length; j++) {
-      console.log(level1Questions[w].choices.length)
-      console.log(level1Questions[w].choices[j])
-      console.log(htmlChoices[j].innerHTML)
       htmlChoices[j].innerHTML = level1Questions[w].choices[j]
-      console.log(htmlChoices[j].innerHTML = level1Questions[w].choices[j])
-      console.log(level1Questions[w].answer)
+      
       timer();
       //adding event click event listener so player can answer the question
       htmlChoices[j].addEventListener("click", function select(event) {
         event.preventDefault()
         if (z === true) {
         if (htmlChoices[j].innerHTML === level1Questions[w].answer) {
-          htmlChoices[j].style.background = "green"
+          htmlChoices[j].style.color = "green"
           z = false;
           htmlPrompt.innerHTML = victoryMessage[randomVictoryMessage]
           score += 10;
           htmlScore.innerHTML = `SCORE: ${score}`;
-          const nextQuestion = setInterval(runLevel1, 2000)
+         const nextQuestion = setInterval(runLevel1, 2000)
           const blank = setInterval(blankCanvas, 2000)
           w++
           //change the prompt to display victory message
