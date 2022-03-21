@@ -10,7 +10,9 @@ let headerTitle = document.querySelector(".header-title")
 let scoreAndTimer = document.querySelector(".header-score-and-timer")
 let titleTrack = document.getElementById("title-track")
 let startMusic = document.querySelector(".sound-notice")
-console.log(startMusic)
+let golfMedia = document.querySelector(".golf-media")
+let background = document.querySelector(".background")
+let svg = document.querySelector("svg")
 let w = 0 //this is for the prompt questions
 let z = true //this is to stop clicks after you've made your selection 
 
@@ -110,11 +112,14 @@ startGame.addEventListener("submit", function start(e) {
   document.querySelector(`[data-sound="never-too-far"]`).play()
   w = 0;
   e.preventDefault();
-  setTimeout(() => { headerTitle.classList.add('fullzoom') }, 1000)
+ // golfMedia.style.display = "initial"
+ // htmlPrompt.style.color = "#f8f5e9"
+//  setTimeout(() => { golfMedia.classList.add('fullzoom') }, 1000)
   startGame.style.display = "none"
   startMusic.style.display = "none"
   headerTitle.style.display = "none"
   scoreAndTimer.style.display = "initial"
+
     // NEED TO: add transition function and play "callll meeeee if you get loossttt"// 
   htmlPrompt.innerHTML = level1Questions[w].question 
   for (let i = 0; i < htmlChoices.length; i++) {
@@ -142,6 +147,8 @@ startGame.addEventListener("submit", function start(e) {
           //put audio here -->
         } else {
           htmlChoices[j].style.background = "red"
+          score -= 10;
+          htmlScore.innerHTML = `SCORE: ${score}`;
           z = false;
           htmlPrompt.innerHTML = "that's wrong"
           w++
@@ -191,9 +198,10 @@ function runLevel1() {
           htmlPrompt.innerHTML = victoryMessage[randomVictoryMessage]
           score += 10;
           htmlScore.innerHTML = `SCORE: ${score}`;
-         const nextQuestion = setInterval(runLevel1, 2000)
+         const nextQ = setTimeout(2000)
           const blank = setInterval(blankCanvas, 2000)
           w++
+          timer();
           //change the prompt to display victory message
           //put audio here -->
         } else {
@@ -203,6 +211,7 @@ function runLevel1() {
           const nextQuestion = setInterval(runLevel1, 1000)
           const blank = setInterval(blankCanvas, 1000)
           w++
+          timer();
           //put audio of tyler saying "fuck you"
           //change prompt to put loss message 
         }
